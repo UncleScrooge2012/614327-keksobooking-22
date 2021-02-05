@@ -1,5 +1,6 @@
 
-let numberRandomRange = function (min, max) {
+
+const generateNumberRange = function (min, max) {
   if (min >= 0 && max >= 0) {
     return Math.floor(Math.random() * (max - min + 1)) + min  //Максимум и минимум включаются
   }
@@ -9,11 +10,14 @@ let numberRandomRange = function (min, max) {
 };
 
 
-let numberRandomRange2 = function (min, max, comma = 0) {
+const generateRandomRangeWithComma = function (min, max, comma = 0) {
   if (min >= 0 && max >= 0 && comma >= 0) {
-    let result = +number.toFixed(comma)
-    let number = Math.random() * (max - min + 1) + min
-    return result
+    if (min === max ) {
+      return min
+
+    }
+    const number = Math.random() * (max - min + 1) + min
+    return  +number.toFixed(comma)
 
   }
 
@@ -21,9 +25,11 @@ let numberRandomRange2 = function (min, max, comma = 0) {
 
 };
 
-numberRandomRange(2, 5);
+generateNumberRange(2, 5);
 
-numberRandomRange2(1, 6 , 3);
+alert(generateRandomRangeWithComma(1, 1 , 3))
+
+
 
 
 
