@@ -15,7 +15,7 @@ const generateRandomRangeWithComma = function (min, max, comma = 0) {
       return min
 
     }
-    const number = Math.random() * (max - min + 1) + min
+    const number = Math.random() * (max - min ) + min
     return  +number.toFixed(comma)
 
   }
@@ -61,7 +61,7 @@ const generateRandom = function (array) {  // функция для  рандо�
   return newArray
 };
 
-const genraterFoto = function () { // Функция для закгрузки фотографии
+const generaterFoto = function () { // Функция для закгрузки фотографии
   const randomNumber = generateNumber();
   const photosArray = [];
   for(let i = 1; i <= randomNumber; i++  ){
@@ -70,35 +70,12 @@ const genraterFoto = function () { // Функция для закгрузки �
   return photosArray
 };
 
-const genraterLocation = function () {  // Функция по оси X и Y
-
-  const genraterLocationWhisX = function (min = 35.65000, max = 35.70000, comma = 5) {  // Фукция по оси X
-
-    if (min >= 0 && max >= 0 && comma >= 0) {
-      if (min === max ) {
-        return min
-
-      }
-      const number = Math.random() * (max - min + 1) + min
-      return  +number.toFixed(comma)
-
-    }
-  };
-
-  const genraterLocationWhisY = function (min = 139.70000, max = 139.80000, comma = 5) { // Функция по оси Y
-    if (min >= 0 && max >= 0 && comma >= 0) {
-      if (min === max ) {
-        return min
-      }
-      const number = Math.random() * (max - min + 1) + min
-      return  +number.toFixed(comma)
-    }
-  };
+const generaterLocation = function () {  // Функция по оси X и Y
 
   const location = {};
 
-  location.x = genraterLocationWhisX();
-  location.y = genraterLocationWhisY();
+  location.x = generateRandomRangeWithComma(35.65000, 35.70000, 5)
+  location.y = generateRandomRangeWithComma(139.70000, 139.80000, 5)
   return location
 }
 
@@ -106,7 +83,7 @@ const generateOffer = function () {  // функция генерирует сл
 
   const offer = {};
   offer.title = generate(TITLE);
-  offer.address = genraterLocation();
+  offer.address = generaterLocation();
   offer.price = generate(PRICE);
   offer.type = generate(TYPE);
   offer.rooms = generateNumber();
@@ -115,7 +92,7 @@ const generateOffer = function () {  // функция генерирует сл
   offer.checkout = generate(TIME);
   offer.features = generateRandom(FEATURES);
   offer.description = generateRandom(DESCRIPTION);
-  offer.photos = genraterFoto();
+  offer.photos = generaterFoto();
 
 
   return offer
