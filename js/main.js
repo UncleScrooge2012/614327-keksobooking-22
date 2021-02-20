@@ -1,4 +1,4 @@
-import {generateAds} from './setup.js'
+import {generateAds} from './announcement.js'
 
 const reuslte =  generateAds();
 
