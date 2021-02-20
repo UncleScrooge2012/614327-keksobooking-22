@@ -9,8 +9,6 @@ const generateAvatar = function ()  { // Функция случайное чи�
 };
 
 
-
-
 const generateRandomRangeWithComma = function (min, max, comma = 0) {
   if (min >= 0 && max >= 0 && comma >= 0) {
     if (min === max ) {
@@ -66,12 +64,65 @@ const generaterLocation = function () {  // Функция по оси X и Y
 }
 
 
+const checkAvailability = (arr, val) => {
+  return arr.some((arrVal) => {
+    return val === arrVal;
+  });
+}
+
+const genereateFeatures = (feature, itemFeature ) => {
+  const newFeature = [];
+
+  for(let i = 0; i < feature.length; i++  ) {
+
+    for(let j = 0; j < itemFeature.length; j++ ) {
+
+      let className =  itemFeature[j].className;
+      let arrayClassName = className.split('--')
+
+      if(arrayClassName[1] === feature[i]) {
+        newFeature[i] =  itemFeature[j]
+      }
+
+    }
+
+  }
+
+  return newFeature
+
+}
 
 
+const getTitel = (titel) => {
+
+  let newTitel = '';
+
+  switch (titel) {
+    case 'flat':
+      newTitel = 'Квартира';
+      return newTitel
+    case 'bungalow':
+      newTitel = 'Бунгало';
+      return newTitel
+    case 'house':
+      newTitel = 'Дом';
+      return newTitel
+    case 'palace':
+      newTitel = 'Дворец';
+      return newTitel
+  }
+
+}
 
 
-
-
-
-
-export {generate, generaterLocation, generateNumber, generateRandom, generaterFoto, generateAvatar };
+export {
+  generate,
+  generaterLocation,
+  generateNumber,
+  generateRandom,
+  generaterFoto,
+  generateAvatar,
+  checkAvailability,
+  genereateFeatures,
+  getTitel
+};

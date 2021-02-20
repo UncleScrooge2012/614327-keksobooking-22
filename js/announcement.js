@@ -24,7 +24,7 @@ const generateOffer = function () {  // функция генерирует сл
 
 const generateAds = function () { // функция создает объявления
   const adsArray = [];
-  for (let i = 1; i < 4; i++ ) {
+  for (let i = 1; i < 2; i++ ) {
     let ad = 'Ad' + i;
     ad = new Object();
     ad.author = generateAvatar();
