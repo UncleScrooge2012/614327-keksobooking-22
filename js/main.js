@@ -1,7 +1,4 @@
-import {generateAds} from './announcement.js'
+import {generateAds} from './util.js'
+import './popup.js'
 
-const reuslte =  generateAds();
-
-
-alert(reuslte)
-
+generateAds();

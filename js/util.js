@@ -1,4 +1,4 @@
-
+import {TITLE, PRICE, TYPE, TIME, FEATURES, DESCRIPTION} from './data.js'
 
 
 const generateAvatar = function ()  { // Функция случайное число с ведушим нулем
@@ -7,7 +7,6 @@ const generateAvatar = function ()  { // Функция случайное чи�
   const randomString = `img/avatars/user${randomNumber}.png`;
   return randomString
 };
-
 
 
 
@@ -66,12 +65,89 @@ const generaterLocation = function () {  // Функция по оси X и Y
 }
 
 
+const generateOffer = function () {  // функция генерирует случайную информацию
+
+  const offer = {};
+  offer.title = generate(TITLE);
+  offer.address = generaterLocation() ;
+  offer.price = generate(PRICE);
+  offer.type = generate(TYPE);
+  offer.rooms = generateNumber();
+  offer.guests = generateNumber();
+  offer.checkin = generate(TIME);
+  offer.checkout = generate(TIME);
+  offer.features = generateRandom(FEATURES);
+  offer.description = generateRandom(DESCRIPTION);
+  offer.photos = generaterFoto();
+
+  return offer
+}
+
+
+const generateAds = function () { // функция создает объявления
+  const adsArray = [];
+  for (let i = 1; i < 2; i++ ) {
+    let ad = 'Ad' + i;
+    ad = new Object();
+    ad.author = generateAvatar();
+    ad.offer = generateOffer() ;
+    ad.location = ad.offer.address;
+    adsArray.push(ad)
+  }
+  return adsArray
+};
+
+
+const checkAvailability = (arr, val) => {
+  return arr.some((arrVal) => {
+    return val === arrVal;
+  });
+}
+
+const genereateFeatures = (feature, itemFeature ) => {
+  const newFeature = [];
+
+  for(let i = 0; i < feature.length; i++  ) {
+
+    for(let j = 0; j < itemFeature.length; j++ ) {
+
+      let className =  itemFeature[j].className;
+      let arrayClassName = className.split('--')
+
+      if(arrayClassName[1] === feature[i]) {
+        newFeature[i] =  itemFeature[j]
+      }
+
+    }
+
+  }
+
+  return newFeature
+
+}
+
+
+const getTitel = (titel) => {
+
+  let newTitel = '';
+
+  switch (titel) {
+    case 'flat':
+      newTitel = 'Квартира';
+      return newTitel
+    case 'bungalow':
+      newTitel = 'Бунгало';
+      return newTitel
+    case 'house':
+      newTitel = 'Дом';
+      return newTitel
+    case 'palace':
+      newTitel = 'Дворец';
+      return newTitel
+  }
+
+}
 
 
 
-
-
-
-
-
-export {generate, generaterLocation, generateNumber, generateRandom, generaterFoto, generateAvatar };
+export {generateAds, checkAvailability, genereateFeatures, getTitel  };
