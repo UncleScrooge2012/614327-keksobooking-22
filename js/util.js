@@ -9,6 +9,7 @@ const generateAvatar = function ()  { // Функция случайное чи�
 };
 
 
+
 const generateRandomRangeWithComma = function (min, max, comma = 0) {
   if (min >= 0 && max >= 0 && comma >= 0) {
     if (min === max ) {
